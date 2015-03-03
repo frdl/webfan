@@ -541,6 +541,12 @@
   width: 100%;
 }
 
+.redstar {
+ color: #DC143C;
+ font-weight:bold;
+ vertical-align: super;
+}
+
 #searchfield {
   display: block;
   margin-bottom: 35px;
