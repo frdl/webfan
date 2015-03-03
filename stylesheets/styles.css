@@ -15,7 +15,7 @@ body {
   font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #555;
   font-weight: 300;
-  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg==') fixed;
+  background: url('http://static.webfan.de/logos/bg-light-1.png') ;
 }
 
 .wrapper {
@@ -179,12 +179,12 @@ section {
   font-size: 15px;
   border-top: 1px solid #fff;
 
-  background: -webkit-gradient(linear, 50% 0%, 50% 700, color-stop(0%, #ddfbfc), color-stop(100%, #ddfbfc));
-  background: -webkit-linear-gradient(#fafafa,#ddfbfc 700px);
-  background: -moz-linear-gradient(#fafafa, #ddfbfc 700px);
-  background: -o-linear-gradient(#fafafa, #ddfbfc 700px);
-  background: -ms-linear-gradient(#fafafa,#ddfbfc 700px);
-  background: linear-gradient(#fafafa, #ddfbfc 700px);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ddfbfc), color-stop(100%, #ddfbfc));
+  background: -webkit-linear-gradient(#fafafa,#ddfbfc );
+  background: -moz-linear-gradient(#fafafa, #ddfbfc );
+  background: -o-linear-gradient(#fafafa, #ddfbfc );
+  background: -ms-linear-gradient(#fafafa,#ddfbfc );
+  background: linear-gradient(#fafafa, #ddfbfc );
 
 
 
