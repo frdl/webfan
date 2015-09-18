@@ -49,7 +49,8 @@ $(document).ready(function() {
 	function(){
 		$.WebfanDesktop.resetReady('Loading...',45, 
 	   	        function(){
-	   	        	var r= ( 'undefined' !== typeof Dom.g('window_frdl-webfan') && 'undefined' !== typeof Dom.g('window_terminal') );
+	   	        	var r= ( 'undefined' !== typeof Dom.g('window_frdl-webfan') 
+	   	        	      && 'undefined' !== typeof Dom.g('window_terminal') );
 	   	        	if(true !== r) return r;
 	   	        	$.WebfanDesktop.o.progress = 96;
 	   	        	$('#window_frdl-webfan').fadeOut('slow');
