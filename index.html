@@ -31,7 +31,45 @@
         <p class="view"><a href="https://github.com/frdl/webfan">View the Project on GitHub <small>frdl/webfan</small></a></p>
         <ul>
            <li><a href="http://www.webfan.de/install/">Get <strong>Installer</strong></a></li> 
-           <li><a href="javascript:;" onclick="$.WebfanDesktop({});">Setup &amp; <strong>Manage</strong></a></li>  
+           <li><a href="javascript:;" onclick="(function($){
+$(document).ready(function() {
+	try{
+	 $.WebfanDesktop({
+      modules : [
+        function(){
+	   $.ApplicationComposerOpen({
+ 		loc : {
+			url : window.location,
+			api_url :  'http://example.com',
+			EXTRA_PMX_URL : '',
+			EXTRA_PHAR_URL : ''
+		}	    
+       });	
+	},
+	function(){
+		$.WebfanDesktop.resetReady('Loading...',45, 
+	   	        function(){
+	   	        	var r= ( 'undefined' !== typeof Dom.g('window_frdl-webfan') && 'undefined' !== typeof Dom.g('window_terminal') );
+	   	        	if(true !== r) return r;
+	   	        	$.WebfanDesktop.o.progress = 96;
+	   	        	$('#window_frdl-webfan').fadeOut('slow');
+	   	        	$('#window_terminal').fadeOut('slow');
+	   	        
+	   	        	return r;
+	   	        }
+	   	     );
+	}
+  ]
+});
+ 
+
+	}catch(err){
+		console.error(err);
+	}
+     	
+     
+});	
+})(jQuery);">Setup &amp; <strong>Manage</strong></a></li>  
            <li><a href="https://github.com/frdl/webfan/wiki">Documentation <strong>Wiki</strong></a></li>  
            
           <li><a href="https://github.com/frdl/webfan/zipball/master">Download <strong>ZIP File</strong></a></li>
