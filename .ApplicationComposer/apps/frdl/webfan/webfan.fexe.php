@@ -1191,7 +1191,7 @@ HTML;
 			 			            'repositories' =>   $this->data['config']['DIR_PACKAGE'] . '.ApplicationComposer'. DIRECTORY_SEPARATOR .'repositories'. DIRECTORY_SEPARATOR,
 			 			            'servers' =>   $this->data['config']['DIR_PACKAGE'] . '.ApplicationComposer'. DIRECTORY_SEPARATOR .'servers'. DIRECTORY_SEPARATOR,
 			 			            'share' =>   $this->data['config']['DIR_PACKAGE'] . '.ApplicationComposer'. DIRECTORY_SEPARATOR .'share'. DIRECTORY_SEPARATOR,
-			 			            'tmp' =>   $this->tmpdir(),
+			 			            'tmp' =>   $this->data['config']['DIR_PACKAGE'] . '.ApplicationComposer'. DIRECTORY_SEPARATOR .'tmp'. DIRECTORY_SEPARATOR,
 			 			            'vendor' =>   $this->data['config']['DIR_PACKAGE'] . '.ApplicationComposer'. DIRECTORY_SEPARATOR .'vendor'. DIRECTORY_SEPARATOR,
                                     'www' =>   (is_dir($this->data['config']['DIRS']['www']) && is_writable($this->data['config']['DIRS']['www'])) ? $this->data['config']['DIRS']['www'] : $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR ,
 			 					    'files' =>	(isset($_REQUEST['EXTRA_DIR']) && is_dir($_REQUEST['EXTRA_DIR']) )	? $_REQUEST['EXTRA_DIR'] : (
@@ -1486,26 +1486,6 @@ foreach(array(
 
 
 
-  public function tmpdir(){
-
-    if ( function_exists('sys_get_temp_dir')) {
-		return rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR.' ').DIRECTORY_SEPARATOR;
-	}
-
-       if (!empty($_ENV['TMP'])) { return realpath($_ENV['TMP']); }
-       if (!empty($_ENV['TMPDIR'])) { return realpath( $_ENV['TMPDIR']); }
-       if (!empty($_ENV['TEMP'])) { return realpath( $_ENV['TEMP']); }
-       $tempfile=tempnam(__FILE__,'');
-       if (file_exists($tempfile)) {
-         unlink($tempfile);
-         return rtrim(realpath(dirname($tempfile)), DIRECTORY_SEPARATOR.' ').DIRECTORY_SEPARATOR;
-       }
-       
-       return  $this->data['config']['DIR_PACKAGE'] . '.ApplicationComposer'. DIRECTORY_SEPARATOR .'tmp'. DIRECTORY_SEPARATOR;
-  }
-
-
-
 	public function copy_dir($src,$dst, $delete  = true, $chmod = 0755) {
       $dir = opendir($src);
       @mkdir($dir, 755, true);
@@ -1689,14 +1669,8 @@ foreach(array(
 				   $this->Console->applyApp($this);
 				  
 				  
-				  try{
-				     $this->Console->exe($cmd);
-				     return  $this->_api_response( $this->Console->dump() );	
-				  }catch(\Exception $e){
-				  	   if($this->isLoggedIn())$this->data['data_out']->out = $e->getMessage(); 
-		               return;
-	               }
-				
+				   $this->Console->exe($cmd);
+				  return  $this->_api_response( $this->Console->dump() );
 			
 				}else{
 					\webdof\wResponse::status(501);

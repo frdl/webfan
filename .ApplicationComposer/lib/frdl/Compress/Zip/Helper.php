@@ -51,76 +51,37 @@ class Helper
         
   }	
     
-     
-  public static function getComment($zipfilePath, $filename){
-  	 $r = false;
-     $zip = new \ZipArchive;
-     if (true===$zip->open($zipfilePath) ){
-	 	if(true===$zip->setCommentName($filename, $comment)){
-			$r =  true;
-		}
-	 	$zip->close();
-	 }
-     return $r;
-  }  
-       
-  public static function commentFile($zipfilePath, $filename, $comment){
-  	 $r = false;
-     $zip = new \ZipArchive;
-     if (true===$zip->open($zipfilePath) ){
-	 	$r = $zip->getCommentName($filename);
-	 	$zip->close();
-	 }
-     return $r;
-  }  
-    
-   public static function set($zipfilePath, $filename, $str = null, $fn = null){
-   	   if(is_callable($fn)){
-	   	  $str = call_user_func_array($fn, array($str));
-	   }
-   	  return self::add($filename, $zipfilePath, $str);
-   }
-     
-   public static function get($zipfilePath, $filename, $field = null){
-   	   if(is_callable($field)){
-	   	  $check = self::getFileContents($zipfilePath, $filename, $c);
-	   	  if(true!==$check['ok'])return false;
-	   	  return call_user_func_array($field, array($c));
-	   }
-   	   $stats = self::getArchiveFilestats($zipfilePath, $field);
-   	   return (false !== $stats && isset($stats[$filename])) ? $stats[$filename] : false;
-   }
-  /** 
-     The following code can be used to get a list of all the file names in a zip file.
- */
-   public static function getArchiveFilenames($zipfilePath){
-   	    return self::getArchiveFilestats($zipfilePath, 'name');
-    }
-   
-   public static function getArchiveFilestats($zipfilePath, $field = null){
-   	     if(!file_exists($zipfilePath))return false;
-		 $names = array();
+      
+   public static function removeFile($filename, $zipfile){
+   	     if(!file_exists($zipfile))return false;
          $za = new \ZipArchive();
-         if(!$za->open($zipfilePath)){
-		 	return false;
-		 }
-
+         $za->open($zipfile);
          for( $i = 0; $i < $za->numFiles; $i++ ){
               $stat = $za->statIndex( $i );
-			 // $e = explode('/',$stat['name']);
-			 // $k = (count($e) < 2) ? 0 : 1;
-			 // $k = '_'.str_replace('/','_',$stat['name']);
-              $names[$stat['name']] = ($field !== null && isset($stat[$field])) 
-                           ? $stat[$field] 
-						   : $stat;
+			  if($stat['name'] !== $filename)continue;
+			   $zip->deleteIndex($i);
+			  break;
          } 
-	   ksort($names);	
 	   $za->close(); 
-       return $names;
-    } 
+	   return true;
+   } 
+     
   
      
- 
+   public static function removeThumbs($filename){
+   	     if(!file_exists($filename))return false;
+         $za = new \ZipArchive();
+         $za->open($filename);
+		 $count = 0;
+         for( $i = 0; $i < $za->numFiles; $i++ ){
+              $stat = $za->statIndex( $i );
+			  if(basename($stat['name']) !== 'Thumbs.db')continue;
+			  $za->deleteIndex($i);
+			  $count++;
+         } 
+	   $za->close(); 
+	   return $count;
+  } 
     	
   public static function getFileContents($archivefilename, $filename, &$buf = null){	
    $zip = new \ZipArchive();
@@ -147,7 +108,7 @@ class Helper
     $s = ob_get_contents();
     ob_end_clean();
   
-    if(stripos($s, "CRC error") !==false){
+    if(stripos($s, "CRC error") != FALSE){
       //  echo 'CRC32 mismatch, current ';    //\ZipArchive::ER_CRC
           $buf = null;
           fclose($fp);
@@ -176,22 +137,7 @@ class Helper
    
    
   
-  public static function removeThumbs($filename){
-   	     if(!file_exists($filename))return false;
-         $za = new \ZipArchive();
-         $za->open($filename);
-		 $count = 0;
-         for( $i = 0; $i < $za->numFiles; $i++ ){
-              $stat = $za->statIndex( $i );
-			  if(basename($stat['name']) !== 'Thumbs.db')continue;
-			  $za->deleteIndex($i);
-			  $count++;
-         } 
-	   $za->close(); 
-	   return $count;
-  } 
-  
-  	
+	
      /**
      * Compact a file in multipart zip archive.
      * @param string $i The file to compact.
@@ -398,7 +344,33 @@ class Helper
   
   
   
+ /** 
+     The following code can be used to get a list of all the file names in a zip file.
+ */
+   public static function getArchiveFilenames($filename){
+   	    return self::getArchiveFilestats($filename, 'name');
+    }
+   
+   public static function getArchiveFilestats($filename, $field = null){
+   	     if(!file_exists($filename))return false;
+		 $names = array();
+         $za = new \ZipArchive();
+         $za->open($filename);
 
+         for( $i = 0; $i < $za->numFiles; $i++ ){
+              $stat = $za->statIndex( $i );
+			 // $e = explode('/',$stat['name']);
+			 // $k = (count($e) < 2) ? 0 : 1;
+			 // $k = '_'.str_replace('/','_',$stat['name']);
+              $names[$stat['name']] = ($field !== null && isset($stat[$field])) 
+                           ? $stat[$field] 
+						   : $stat;
+         } 
+	   ksort($names);	
+	   $za->close(); 
+       return $names;
+    } 
+ 
  /**
 * Check if the file is encrypted
 *
@@ -422,20 +394,6 @@ class Helper
     return $encrypted;
    }  
    
-      
-   public static function removeFile($filename, $zipfile){
-   	     if(!file_exists($zipfile))return false;
-         $za = new \ZipArchive();
-         $za->open($zipfile);
-         for( $i = 0; $i < $za->numFiles; $i++ ){
-              $stat = $za->statIndex( $i );
-			  if($stat['name'] !== $filename)continue;
-			   $zip->deleteIndex($i);
-			  break;
-         } 
-	   $za->close(); 
-	   return true;
-   } 
-        
+   
    
 }
