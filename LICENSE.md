@@ -1,32 +1,3 @@
-Application Composer (frdl/webfan)
-=
-create websites, developing projects, compose applications
-
-Versions 1.x : development status
-First final Version will be 2.0.1
-
-[Install newest](http://www.webfan.de/install/)
-[![Latest Stable Version](https://poser.pugx.org/frdl/webfan/v/stable)](https://packagist.org/packages/frdl/webfan) [![Total Downloads](https://poser.pugx.org/frdl/webfan/downloads)](https://packagist.org/packages/frdl/webfan) [![Latest Unstable Version](https://poser.pugx.org/frdl/webfan/v/unstable)](https://packagist.org/packages/frdl/webfan) [![License](https://poser.pugx.org/frdl/webfan/license)](https://packagist.org/packages/frdl/webfan)
-
-* @requires          PHP >= 5.3
-* [Homepage](http://frdl.github.io/webfan/)
-* [Documentation](https://github.com/frdl/webfan/wiki)
-
-
-Language Files and Translation Project
-=
-https://github.com/frdl/translations
-
-
-Authors
-=
-
-* Till Wehowski, http://domainundhomepagespeicher.de (Owner, Team Leader)
-* Mahel Plasson, http://tradezone.fr (Chief-Translator, French Translator)
-
-
-License
-=
 Copyright (c) 2015, Till Wehowski
 All rights reserved.
 
@@ -54,4 +25,3 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
