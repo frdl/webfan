@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<!-- Thank you what the fucking Microsoft, how is this code illegal? Allowed Domains are checked!?! -->
+	
+	<script src="https://cdn.frdl.de/@frdl/forked/cross-domain-storage/fs.js"></script>
+	<script src="https://cdn.frdl.de/@webfan3/common/sha1.js"></script>
+	<script src="https://cdn.frdl.de/@frdl/forked/cross-domain-storage/host-fs.js"></script>
+<script>
+var userHosts = null === localStorage.getItem(storageHost.KEY_ALLOWED_HOSTS) 
+                 ? []
+                 : JSON.parse(localStorage.getItem(storageHost.KEY_ALLOWED_HOSTS) );
+	
+var storage = storageHost([
+    {
+        origin: 'https://domainundhomepagespeicher.de',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: /^(https\:\/\/([^\.]+)\.domainundhomepagespeicher\.de)$/,
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://webfan.de',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: /^(https\:\/\/([^\.]+)\.webfan\.de)$/,
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://webfan3.de',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: /^(https\:\/\/([^\.]+)\.webfan3\.de)$/,
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+	{
+        origin: 'https://webfan.market',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: /^(https\:\/\/([^\.]+)\.webfan\.market)$/,
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://frdl.de',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://cdn.frdl.de',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://data.registry.frdl.de',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://registry.frdl.de',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: /^(https\:\/\/([^\.]+)\.frdl\.de)$/,
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://frdlweb.de',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: /^(https\:\/\/([^\.]+)\.frdlweb\.de)$/,
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://startforum.de',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://startdir.de',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    }, 
+    {
+        origin: 'https://webfan.io',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: /^(https\:\/\/([^\.]+)\.webfan\.io)$/,
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://webfan.website',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: /^(https\:\/\/([^\.]+)\.webfan\.website)$/,
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+	
+    {
+        origin: 'https://smoke.tel',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://call.smoke.tel',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://baeren.pewro.de',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://un.till42.de',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://woist.xyz',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: /^(https\:\/\/([^\.]+)\.woist\.xyz)$/,
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://io4.xyz',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: /^(https\:\/\/([^\.]+)\.io4\.xyz)$/,
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://wfpu.de',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: /^(https\:\/\/([^\.]+)\.wfpu\.de)$/,
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    },
+    {
+        origin: 'https://uschi.cool',
+        allowedMethods: ['get', 'set', 'remove', 'writeFile', 'readFile', 'unlink', 'mkdir'],
+    }
+	
+].concat(userHosts));
+</script>
+</head>
+<body>
+	Storage frame | <a href="https://webfan.de" target="_top">Got to Webfan</a>
+</body>
+</html>
