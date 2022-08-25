@@ -3,107 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Webfan by frdl</title>
-    <link rel="shortcut icon" href="http://static.webfan.de/webfan.favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <link rel="stylesheet" href="stylesheets/webfan.css">    
-    <script src="javascripts/scale.fix.js"></script>
-    <script src="http://api.webfan.de/api-d/4/js-api/library.js"></script>    
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Webfan - This page is under construction...</title>
+    <link rel="shortcut icon" href="https://webfan.de/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
   </head>
-  <body>
-    
-    
-
-    
-    
-    <div class="wrapper">
-      <header>
-        <h1 class="webfan-blue">Webfan</h1>
-        <p class="webfan-red">- <strong class="webfan-red" style="color: #DC143C;font-weight:bold:font-size:16px;">Application Composer</strong></p>
-        <p><strong>create</strong> websites, <strong>developing</strong> projects,<br /><strong>compose</strong> applications</p>
-    
-        <p class="view"><a href="https://github.com/frdl/webfan">View the Project on GitHub <small>frdl/webfan</small></a></p>
-        <ul>
-           <li><a href="http://www.webfan.de/install/">Get <strong>Installer</strong></a></li> 
-           <li><a href="javascript:;" onclick="(function($){
-$(document).ready(function() {
-	try{
-	 $.WebfanDesktop({
-      modules : [
-        function(){
-	   $.ApplicationComposerOpen({
- 		loc : {
-			url : window.location,
-			api_url :  'http://example.com',
-			EXTRA_PMX_URL : '',
-			EXTRA_PHAR_URL : ''
-		}	    
-       });	
-	},
-	function(){
-		$.WebfanDesktop.resetReady('Loading...',45, 
-	   	        function(){
-	   	        	var r= ( ('undefined' !== typeof Dom.g('window_frdl-webfan')) && ('undefined' !== typeof Dom.g('window_terminal')) );
-	   	        	if(true !== r) return r;
-	   	        	$.WebfanDesktop.o.progress = 96;
-	   	        	$('#window_frdl-webfan').fadeOut('slow');
-	   	        	$('#window_terminal').fadeOut('slow');
-	   	        
-	   	        	return r;
-	   	        }
-	   	     );
-	}
-  ]
-});
- 
-
-	}catch(err){
-		console.error(err);
-	}
-     	
-     
-});	
-})(jQuery);">Setup &amp; <strong>Manage</strong></a></li>  
-           <li><a href="https://github.com/frdl/webfan/wiki">Documentation <strong>Wiki</strong></a></li>  
-           
-          <li><a href="https://github.com/frdl/webfan/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <!-- <li><a href="https://github.com/frdl/webfan/tarball/master">Download <strong>TAR Ball</strong></a></li> -->
-          <li><a href="https://github.com/frdl/webfan">Source <strong>Code</strong></a></li>
-               
-        </ul>
-      </header>
-     
-<section style="min-width:450px;">
-  <ul>
-    <li>+ PHP Package Manager/Downloader</li>
-    <li>+ PHP Library</li>
-    <li>- <a href="https://github.com/frdl/webfan/wiki/Installation">Install...</a></li>
-  </ul>
-  
-  
-  <small>
-  	     <span class="webfan-red">
-  	      Edition: Testedition
-  	     </span> (First productional versions available very soon!)
-  	     </small>
-  	     
-</section>      
-      
-<div data-frdl-component="widget://example.com/frdl/webfan"></div>
-    
-      
-    </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/frdl">frdl</a>/<a href="http://www.webfan.de/Impressum.html">imprint</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
-  </body>
+<body>
+loading...
+<script>
+(async ()=>{
+    var c = await fetch('https://cdn.frdl.de/@webfan3/webfat/workspace.html')
+    document.write( await c.text() );	
+})(); 
+</script>
+</body>
 </html>
