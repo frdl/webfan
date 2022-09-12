@@ -11,21 +11,17 @@
   <link rel="icon" href="https://webfan.de/favicon.ico" type="image/x-icon">
   <meta name="generator" content="Webf.at" />
   <link rel="stylesheet" href="https://webf.at/themes/webfantized-standard-theme/style.css" type="text/css" media="all" />
-<script type="text/javascript">(async(q,v,w,d,h,wcsb)=>{var s=d.createElement('script');
-s.setAttribute('src', 'https://io4.xyz.webfan3.de/assets'
-   +'/!bundle/run/' +h+'-'+v+'/@webfan3/frdlweb/webfan-website.js'
-);
-s.setAttribute('data-webfan-config-query', q);													  
-s.setAttribute('data-frdl-website-origin', w.origin);s.async=true;s.onload=()=>{wcsb();};d.head.append(s);	 
-})(
-   'DEBUG.enabled=true&requirejs.baseUrl=https://io4.xyz.webfan3.de/assets/&base.routes.cdn=https://io4.xyz.webfan3.de/assets/',
-   'abcdef0123456789-20220821',
-   window, 
-   document,  
-   (new Date()).getYear() + '-' +  (new Date()).getMonth()+ '-' +  (new Date()).getDay(),
-   ()=>{ 
-		
-});</script>	
+<script type="text/javascript">
+((q, w,d)=>{
+var s=d.createElement('script');
+s.setAttribute('src', 'https://io4.xyz.webfan3.de/webfan.js?' + q);	
+s.async='false';
+s.onload=()=>{
+
+};
+d.head.prepend(s);		
+})('DEBUG.enabled=true&requirejs.baseUrl=https://io4.xyz.webfan3.de/assets/&base.routes.cdn=https://io4.xyz.webfan3.de/assets/', window, document);	
+</script>			
 </head>
 <body class="{{ template-name }}">
   <div id="menu">
@@ -47,9 +43,7 @@ s.setAttribute('data-frdl-website-origin', w.origin);s.async=true;s.onload=()=>{
 </nav>
 </div>
 
-  
-  This site will be rebuild...
-  
+  <span frdl-if-js-fadeout="1000" frdl-fade-speed="8000">This site will be rebuild...</span>
   
   <p><frdlweb-terminal commands="['@webfan3/components/webfat-terminal-commands/frdl', '@webfan3/components/webfat-terminal-commands/misc', '@webfan3/components/webfat-terminal-commands/webfat']" terminal-config="webfat"></frdlweb-terminal></p>
 
@@ -60,8 +54,6 @@ s.setAttribute('data-frdl-website-origin', w.origin);s.async=true;s.onload=()=>{
 <a href="https://webfan.de/apps/registry/?goto=oidplus%3Aresources%24About%2FImpressum.html">Impressum</a></p>
   </webfan-footer-links>
 </div>
-
-
 
  </foot>
 </body>
